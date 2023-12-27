@@ -12,10 +12,10 @@
     name: common
     tasks_from: app-setup
 
-- name: download the dependencies
-    ansible.builtin.command: pip3.6 install -r requirements.txt
-    args:
-      chdir: /app
+- name: download the dependenciess
+  ansible.builtin.command: pip3.6 install -r requirements.txt
+  args:
+    chdir: /app
 
 - name: systemd setup
   ansible.builtin.import_role:
