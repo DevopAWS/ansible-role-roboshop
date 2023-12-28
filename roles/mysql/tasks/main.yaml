@@ -1,21 +1,7 @@
-- name: disable mysql
-  ansible.builtin.command: dnf module disable mysql -y
-
-- name: copy my sql repo
-  ansible.builtin.copy:
-    src: mysql.repo
-    dest: /etc/yum.repos.d/mysql.repo
-
-- name: install mysql server
-  ansible.builtin.package:
-    name: mysql-community-server
-    state: present
-
-- name: start and enable the mysql
-  ansible.builtin.service:
-    name: mysqld
-    state: restarted
-    enabled: yes
+- name: mysql setup
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: mysql-setup
 
 - name: setup root password
   ansible.builtin.command: mysql_secure_installation --set-root-pass RoboShop@1 

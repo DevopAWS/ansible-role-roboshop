@@ -1,21 +1,13 @@
-- name: install python
-  ansible.builtin.package:
-    name: "{{item}}"
-    state: present
-  loop:
-  - python36 
-  - gcc 
-  - python3-devel
 
+- name: python setup
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: python-setup
+    
 - name: app setup
   ansible.builtin.import_role:
     name: common
     tasks_from: app-setup
-
-- name: download the dependenciess
-  ansible.builtin.command: pip3.6 install -r requirements.txt
-  args:
-    chdir: /app
 
 - name: systemd setup
   ansible.builtin.import_role:
