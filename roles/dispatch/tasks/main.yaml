@@ -6,7 +6,7 @@
 - name: go setup
   ansible.builtin.import_role:
     name: common
-    tasks_from: go-setup
+    tasks_from: go
 
 - name: systemd setup
   ansible.builtin.import_role:
